@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Viral Hook Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-yellow-50 text-gray-900">
+  <div class="max-w-4xl mx-auto py-10 px-6">
+    <h1 class="text-3xl font-bold text-center text-yellow-600 mb-6">📈 Viral Hook Generator</h1>
+    <form id="hookForm" class="space-y-5">
+      <div><label class="block font-semibold mb-1">Primary Emotion or Theme</label><input type="text" id="theme" class="w-full px-4 py-2 border rounded-md shadow-sm" /></div>
+      <div><label class="block font-semibold mb-1">Genre / Style</label><input type="text" id="genre" class="w-full px-4 py-2 border rounded-md shadow-sm" /></div>
+      <div><label class="block font-semibold mb-1">Vibe</label>
+        <select id="vibe" class="w-full px-4 py-2 border rounded-md shadow-sm">
+          <option value="anthem">Anthem / Chant</option>
+          <option value="emotional">Emotional / Raw</option>
+          <option value="flex">Flex / Swagger</option>
+          <option value="dark">Dark / Intense</option>
+          <option value="catchy">Catchy / Earworm</option>
+        </select></div>
+      <div><label class="block font-semibold mb-1">Key Words or Slang</label><input type="text" id="keywords" class="w-full px-4 py-2 border rounded-md shadow-sm" /></div>
+      <button type="button" onclick="generateHook()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 rounded-lg transition">Generate Hook Line</button>
+    </form>
+    <div class="mt-10">
+      <h2 class="text-xl font-semibold text-yellow-600 mb-2">🔥 Viral Hook Prompt</h2>
+      <pre id="output" class="bg-gray-900 text-white p-4 rounded-lg overflow-auto whitespace-pre-wrap font-mono text-sm"></pre>
+    </div>
+  </div>
+  <script>
+    function generateHook() {
+      const theme = document.getElementById('theme').value;
+      const genre = document.getElementById('genre').value;
+      const vibe = document.getElementById('vibe').value;
+      const keywords = document.getElementById('keywords').value;
+      const vibeStyles = {
+        "anthem": "a bold, repetitive chant with viral impact",
+        "emotional": "a heartfelt one-liner that hits deep",
+        "flex": "a braggadocious bar full of confidence",
+        "dark": "a gritty, intense line with edge",
+        "catchy": "a super sticky, rhythmic line you can’t forget"
+      };
+      const hook = \`🎵 Genre: \${genre}
+🎯 Theme: \${theme}
+💥 Vibe: \${vibeStyles[vibe]}
+🧠 Slang/Keywords: \${keywords}
+
+Prompt:
+Create a one-liner hook in the \${genre} style that captures the theme "\${theme}", using \${vibeStyles[vibe]}. Include or nod to: \${keywords}.\`;
+      document.getElementById('output').textContent = hook;
+    }
+  </script>
+</body>
+</html>
